@@ -23,7 +23,7 @@ exec_always --no-startup-id dunst --conf ~/.config/dunst/dunstrc
 #exec_always --no-startup-id mpd
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id $HOME/scripts/net_fix.sh
-exec_always --no-startup-id sudo killall -2 redshift && redshift -l 41.04:28.97
+#exec_always --no-startup-id sudo killall -2 redshift && redshift -l 41.04:28.97
 exec_always --no-startup-id goodvibes --status-icon
 
 
@@ -184,7 +184,7 @@ bindsym XF86AudioStop           exec --no-startup-id mpc toggle
 bindsym XF86MonBrightnessUp		exec sudo light -A 10
 bindsym XF86MonBrightnessDown	exec sudo light -U 10
 
-bindsym --release Print         exec --no-startup-id scrot -s -b -d 1 '%Y:%m:%d:%H:%M:%S.png' -e 'mv $f ~/Pictures/Screenshots'
+bindsym --release Print         exec --no-startup-id scrot -s -b -d 1 '%Y:%m:%d:%H:%M:%S.png' -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots'
 bindsym --release $alt+l        exec --no-startup-id /usr/bin/slock
 bindsym --release $alt+k        exec sudo systemctl suspend
 

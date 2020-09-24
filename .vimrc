@@ -128,6 +128,7 @@ set ttimeoutlen=100
 	autocmd FileType tex inoremap ,ssec \subsection{}<Enter><Enter><++><Esc>2kf}i
 	autocmd FileType tex inoremap ,sssec \subsubsection{}<Enter><Enter><++><Esc>2kf}i
 	autocmd FileType tex inoremap ,r (\ref{})<++><Esc>F}i
+	autocmd FileType tex inoremap ,c \cite{}<++><Esc>F}i
 	" Equations
 	autocmd FileType tex inoremap ,e \begin{equation}<Enter><Enter>\end{equation}<Enter><++><Esc>2kA<Tab>
 	autocmd FileType tex inoremap ,el \begin{equation}<Enter><Enter>\label{<++>}<Enter>\end{equation}<Enter><++><Esc>3kA<Tab>
@@ -139,6 +140,7 @@ set ttimeoutlen=100
 	autocmd FileType tex inoremap ,pr \begin{property}<Enter><Enter>\end{property}<Enter><++><Esc>2kA<Tab>
 	autocmd FileType tex inoremap ,th \begin{theorem}<Enter><Enter>\end{theorem}<Enter><++><Esc>2kA<Tab>
 	autocmd FileType tex inoremap ,lm \begin{lemma}<Enter><Enter>\end{lemma}<Enter><++><Esc>2kA<Tab>
+	autocmd FileType tex inoremap ,a \begin{array}{}<Enter><++><Enter>\end{array}<Enter><++><Esc>3k$F{a
 	autocmd FileType tex inoremap ,se $$ <++><Esc>F$i
 	autocmd FileType tex inoremap ,m \mathbb{} <++><Esc>F}i
 	autocmd FileType tex inoremap ,mr \mathbb{R}^{} <++><Esc>F}i
@@ -161,7 +163,7 @@ set ttimeoutlen=100
 	autocmd FileType tex inoremap ,l \mathcal{L}_{}<++><Esc>F{a
 	autocmd FileType tex inoremap ,li \mathcal{L}_{\infty}
 	autocmd FileType tex inoremap ,i \infty
-	autocmd FileType tex inoremap ,t \tau
+	autocmd FileType tex inoremap ,t \theta
 	autocmd FileType tex inoremap ,te \triangleq
 
 """Git Commits
