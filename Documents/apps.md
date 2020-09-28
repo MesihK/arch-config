@@ -21,9 +21,7 @@
 * for chinese characters use: wqy-zenhei
 
 ## Snipping Tool
-* `sudo add-apt-repository ppa:shutter/ppa
-  sudo apt-get update
-  sudo apt-get install shutter`
+use `scrot -s`
 
 ## Youtube-dl 
 * to download a playlist starting from a video:

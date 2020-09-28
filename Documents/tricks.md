@@ -128,11 +128,12 @@ Save output of com to a log file:
 `picocom /dev/ttyUSB1 -b 115200 -l | tee my.log`
 
 
-##Microscope
+## Microscope
+
 `gst-launch-1.0 v4l2src device='/dev/video2' ! videoflip method=horizontal-flip \
  ! videoflip method=vertical-flip ! autovideoconvert ! autovideosink`
 
-##Git Submodule
+## Git Submodule
 
 Add a submodule for a specific branch with shallow copy:
 `git submodule add --depth 1 https://github.com/MesihK/linux.git`
@@ -143,7 +144,7 @@ git add linux
 git ci -m'checked to f1c100s branch'
 
 
-##Virtualbox
+## Virtualbox
 
 In order to acces usb devices from Linux host:
 `sudo usermod -a -G vboxusers mesih`
