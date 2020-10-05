@@ -142,8 +142,8 @@ set ttimeoutlen=100
 	autocmd FileType tex inoremap ,lm \begin{lemma}<Enter><Enter>\end{lemma}<Enter><++><Esc>2kA<Tab>
 	autocmd FileType tex inoremap ,a \begin{array}{}<Enter><++><Enter>\end{array}<Enter><++><Esc>3k$F{a
 	autocmd FileType tex inoremap ,se $$ <++><Esc>F$i
-	autocmd FileType tex inoremap ,m \mathbb{} <++><Esc>F}i
-	autocmd FileType tex inoremap ,mr \mathbb{R}^{} <++><Esc>F}i
+	autocmd FileType tex inoremap ,m \in \mathbb{} <++><Esc>F}i
+	autocmd FileType tex inoremap ,mr \in \mathbb{R}^{} <++><Esc>F}i
 	autocmd FileType tex inoremap ,d \dot{} <++><Esc>F}i
 	autocmd FileType tex inoremap ,dd \ddot{} <++><Esc>F}i
 	autocmd FileType tex inoremap ,ddd \dddot{} <++><Esc>F}i
@@ -160,8 +160,8 @@ set ttimeoutlen=100
 	autocmd FileType tex inoremap ,v \vert \vert \vert \vert <++><Esc>3Fta 
 	autocmd FileType tex inoremap ,tl \tilde{}<++><Esc>F{a
 	autocmd FileType tex inoremap ,b \bar{}<++><Esc>F{a
-	autocmd FileType tex inoremap ,l \mathcal{L}_{}<++><Esc>F{a
-	autocmd FileType tex inoremap ,li \mathcal{L}_{\infty}
+	autocmd FileType tex inoremap ,l \in \mathcal{L}_{}<++><Esc>F{a
+	autocmd FileType tex inoremap ,li \in \mathcal{L}_{\infty}
 	autocmd FileType tex inoremap ,i \infty
 	autocmd FileType tex inoremap ,t \theta
 	autocmd FileType tex inoremap ,te \triangleq

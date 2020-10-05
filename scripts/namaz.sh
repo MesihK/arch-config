@@ -18,17 +18,17 @@ todate () {
 
 printname () {
     if [ $1 = "1" ]; then
-        echo "imsak"
+        echo "Imsak"
     elif [ $1 = "2" ]; then
-        echo "gunes"
+        echo "Güneş"
     elif [ $1 = "3" ]; then
-        echo "ogle"
+        echo "Öğle"
     elif [ $1 = "4" ]; then
-        echo "ikindi"
+        echo "İkindi"
     elif [ $1 = "5" ]; then
-        echo "aksam"
+        echo "Akşam"
     else
-        echo "yatsi"
+        echo "Yatsı"
     fi
 }
 

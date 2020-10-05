@@ -16,7 +16,7 @@ set $term --no-startup-id /usr/local/bin/st
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.png
 #exec_always --no-startup-id wal -a 230 -c -i ~/.config/wall.png
 exec_always --no-startup-id xautolock -time 10 -locker slock
-exec_always --no-startup-id xcompmgr
+exec_always --no-startup-id xcompmgr -f
 exec_always --no-startup-id xrandr --dpi 96
 #exec_always --no-startup-id nm-applet
 exec_always --no-startup-id dunst --conf ~/.config/dunst/dunstrc
@@ -143,7 +143,7 @@ bindsym $alt+Shift+semicolon resize grow width 10 px or 10 ppt
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $alt+Shift+r restart
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-altg exit'"
 
@@ -165,9 +165,6 @@ bindsym $mod+Shift+n	exec --no-startup-id gksu /home/mesih/scripts/net_fix.sh
 bindsym $mod+m			exec --no-startup-id gksu /home/mesih/scripts/dmenumount.sh
 bindsym $mod+u			exec --no-startup-id gksu /home/mesih/scripts/dmenuumount.sh
 bindsym $mod+r			exec $term -e ranger
-# bindsym $mod+c		exec $term -e calcurse
-bindsym $mod+Shift+r	exec $term -e sudo ranger
-#bindsym $mod+c			exec --no-startup-id shutter
 
 bindsym XF86AudioMute           exec --no-startup-id amixer -D pulse sset Master toggle
 bindsym XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-volume 0 -10%
@@ -186,12 +183,15 @@ bindsym XF86MonBrightnessDown	exec sudo light -U 10
 
 bindsym --release Print         exec --no-startup-id scrot -s -b -d 1 '%Y:%m:%d:%H:%M:%S.png' -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots'
 bindsym --release $alt+l        exec --no-startup-id /usr/bin/slock
-bindsym --release $alt+k        exec sudo systemctl suspend
+bindsym --release $alt+k        exec systemctl suspend
 
 bindsym $mod+Shift+y	exec --no-startup-id "bash ~/scripts/i3resize left"
 bindsym $mod+Shift+u	exec --no-startup-id "bash ~/scripts/i3resize down"
 bindsym $mod+Shift+i	exec --no-startup-id "bash ~/scripts/i3resize up"
 bindsym $mod+Shift+o	exec --no-startup-id "bash ~/scripts/i3resize right"
+
+bindsym $mod+Shift+s exec --no-startup-id "python ~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -s"
+bindsym $mod+Shift+d exec --no-startup-id "python ~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -d"
 
 bindsym $mod+i	exec $term -e htop
 
