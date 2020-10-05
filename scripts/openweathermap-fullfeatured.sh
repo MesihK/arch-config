@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #this is the number of Weather Icons font + 1 at the polybar
-WEATHER_FONT_NUM=7
+WEATHER_FONT_NUM=5
 get_icon() {
     case $1 in
         01d) icon="";;
@@ -104,5 +104,5 @@ if [ ! -z "$current" ] && [ ! -z "$forecast" ]; then
     fi
 
     #echo "$(get_icon "$current_icon") $current_temp$SYMBOL  $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL   $daytime"
-    echo "$CNAME $(get_icon "$current_icon") $current_temp$SYMBOL  %{T$WEATHER_FONT_NUM}$trend%{T-}  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
+    echo "$(get_icon "$current_icon") $current_temp$SYMBOL  %{T$WEATHER_FONT_NUM}$trend%{T-}  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL"
 fi

@@ -24,9 +24,22 @@ background-alt = #444
 foreground = #dfdfdf
 ;foreground-alt = #555
 foreground-alt = #afafaf
-primary = #ffb52a
+;primary = #ffb52a
+primary = #55aa55
 secondary = #e60053
 alert = #bd2c40
+
+[c]
+;yesil
+yes = ${colors.primary}
+;kirmizi
+kir = ${colors.secondary}
+;eflatun
+ef = #9f78e1
+;sari
+sar = #ffb52a
+;mavi
+mav = #0a6cf5 
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -52,13 +65,11 @@ padding-right = 0
 module-margin-left = 1
 module-margin-right = 1
 
-font-0 = fixed:pixelsize=8;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=8;1
-font-3 = FontAwesome5Free:style=Solid:size=8;1
-font-4 = FontAwesome5Free:style=Regular:size=8;1
-font-5 = FontAwesome5Brands:style=Regular:size=8;1
-font-6 = Weather Icons:size=8;1
+font-0 = pango:monospace:pixelsize=8;1
+font-1 = FontAwesome5Free:style=Solid:size=8;1
+font-2 = FontAwesome5Free:style=Regular:size=8;1
+font-3 = FontAwesome5Brands:style=Regular:size=8;1
+font-4 = Weather Icons:size=8;1
 
 
 modules-left = i3
@@ -96,17 +107,16 @@ type = internal/xkeyboard
 blacklist-0 = num lock
 format-prefix = " "
 
-#format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix-foreground = ${c.sar}
+format-prefix-underline = ${c.yes}
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = ${c.yes}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
+label-indicator-background = ${c.yes}
+label-indicator-underline = ${c.yes}
 
 [module/filesystem]
 type = internal/fs
@@ -115,6 +125,7 @@ interval = 60
 mount-0 = /
 
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}:%free%
+label-mounted-underline = ${c.yes}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -220,24 +231,24 @@ bar-empty-foreground = ${colors.foreground-alt}
 inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
-format-prefix = " "
-format-charging-underline = #ffb52a
-;TODO: add ""
+format-prefix = " "
+format-underline = ${c.yes}
+format-prefix-foreground = ${c.sar}
 
 [module/cpu]
 type = internal/cpu
 interval = 1
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
+format-prefix-foreground = ${c.kir}
+format-underline = ${c.yes}
+label = %percentage:02:2%%
 
 [module/memory]
 type = internal/memory
 interval = 1
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-prefix-foreground = ${c.ef}
+format-underline = ${c.yes}
 label = %gb_free%
 
 [module/wlan]
@@ -245,8 +256,10 @@ type = internal/network
 interface = wlp2s0 
 interval = 5
 
-format-connected =  <label-connected>
-format-connected-underline = #9f78e1
+format-connected = <label-connected>
+format-connected-underline = ${c.yes}
+format-connected-prefix =  
+format-connected-prefix-foreground = ${c.ef}
 label-connected = %essid%
 
 format-disconnected =
@@ -267,9 +280,9 @@ type = internal/network
 interface = enp8s0
 interval = 5 
 
-format-connected-underline = #55aa55
+format-connected-underline = ${c.yes}
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${c.kir}
 label-connected = %local_ip%
 
 format-disconnected =
@@ -291,7 +304,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = ${c.yes}
 
 label = %date% %time%
 
@@ -299,8 +312,11 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> 
-label-volume =   %percentage%%
+label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
+format-volume-underline = ${c.yes}
+format-volume-prefix = "  "  
+format-volume-prefix-foreground = ${c.sar}  
 
 label-muted =   %percentage%%
 label-muted-foreground = #666
@@ -346,11 +362,11 @@ internal = 60
 
 ;format-charging = <animation-charging> <label-charging>
 format-charging = <ramp-capacity> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.primary}
 
 ;format-discharging = <animation-discharging> <label-discharging>
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = #f90000
+format-discharging-underline = ${colors.secondary}
 
 ;format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
@@ -359,7 +375,7 @@ format-full-underline = ${self.format-charging-underline}
 ramp-capacity-0 = " "
 ramp-capacity-1 = " "
 ramp-capacity-2 = " "
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-foreground = ${c.sar}
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -379,7 +395,7 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.sar}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -437,47 +453,44 @@ type = custom/script
 exec = ~/scripts/namaz.sh
 interval = 60
 format-prefix = " "
-format-underline = #55aa55
+format-underline = ${c.kir}
+format-prefix-foreground = ${c.yes}
 
 [module/openweathermap-fullfeatured]
 type = custom/script
 exec = ~/scripts/openweathermap-fullfeatured.sh
 ;label-font = 6
 interval = 600
-format-underline = #0a6cf5
+format-underline = ${c.ef}
 
 [module/finance]
 type = custom/script
 exec = ~/scripts/finance.sh
 interval = 600
-format-underline = #f50a4d
-format-prefix = " "
-
-[module/todo]
-type = custom/script
-exec = ~/scripts/todo.sh
-interval = 60
-format-underline = #55aa55
+format-underline = ${c.yes}
 
 [module/date2]
 type = custom/script
 exec = "echo $(TZ='US/Central' date +'%d/%m/%Y %H:%M' && TZ='Turkey' date +' %H:%M')"
 interval = 60
-format-underline = #55aa55
+format-underline = ${c.yes}
 format-prefix = " "
+format-prefix-foreground = ${c.sar}
 
 [module/word]
 type = custom/script
 exec = "xclip -o 2>/dev/null | wc -w"
 interval = 5
-format-underline = #55aa55
+format-underline = ${c.yes}
 format-prefix = " "
+format-prefix-foreground = ${c.kir}
 
 [module/tracker]
 type = custom/script
 exec = "~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -q"
 interval = 30
-format-underline = #55aa55
-format-prefix = " "
+format-underline = ${c.sar}
+format-prefix = " " 
+format-prefix-foreground = ${c.yes}
 
 ; vim:ft=dosini

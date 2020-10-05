@@ -10,12 +10,12 @@ set $e exec --no-startup-id
 set $ea exec_always --no-startup-id 
 
 $ea feh --bg-scale ~/.config/wall.png
-$ea xautolock -time 10 -locker slock
+$e  xautolock -time 10 -locker slock
 $ea xcompmgr -f
-$ea xrandr --dpi 96
-$ea dunst --conf ~/.config/dunst/dunstrc
+$e  xrandr --dpi 96
+$e  dunst --conf ~/.config/dunst/dunstrc
 $ea $HOME/.config/polybar/launch.sh
-$ea $HOME/scripts/net_fix.sh
+$e  $HOME/scripts/net_fix.sh
 $e  redshift -l 41.04:28.97
 $ea goodvibes --status-icon
 
