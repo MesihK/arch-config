@@ -148,3 +148,10 @@ git ci -m'checked to f1c100s branch'
 
 In order to acces usb devices from Linux host:
 `sudo usermod -a -G vboxusers mesih`
+
+## FFMPEG Desktop Recording
+
+With headphone microphone:
+```
+ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i 1 output.mkv
+```

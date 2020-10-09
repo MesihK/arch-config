@@ -14,10 +14,19 @@ $e  xautolock -time 10 -locker slock
 $ea xcompmgr -f
 $e  xrandr --dpi 96
 $e  dunst --conf ~/.config/dunst/dunstrc
-$ea $HOME/.config/polybar/launch.sh
+#$ea $HOME/.config/polybar/launch.sh
 $e  $HOME/scripts/net_fix.sh
 $e  redshift -l 41.04:28.97
 $ea goodvibes --status-icon
+
+bar {
+	font pango:Weather Icons 8
+	font pango:FontAwesome5Free Solid 8
+	status_command i3blocks
+	position top
+	#mode dock
+	#modifier None
+}
 
 # start a terminal
 bindsym $mod+Return             split horizontal ;; $term
@@ -119,8 +128,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-altg exit'"
 
 #User key bindings
-bindsym $mod+t				exec setxkbmap tr
-bindsym $mod+e				exec setxkbmap us
+bindsym $mod+t				exec setxkbmap tr && pkill -RTMIN+10 i3blocks
+bindsym $mod+e				exec setxkbmap us && pkill -RTMIN+10 i3blocks
 bindsym $alt+Return			exec /usr/bin/chromium
 bindsym $mod+p				$e /home/mesih/scripts/monitor.sh
 bindsym $mod+Shift+a		$e /home/mesih/scripts/audio.sh
@@ -134,17 +143,17 @@ bindsym $mod+i				$term -e htop
 bindsym --release Print		$e scrot -s -b -d 1 '%Y:%m:%d:%H:%M:%S.png' -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots'
 bindsym --release $alt+l	$e /usr/bin/slock
 bindsym --release $alt+k	exec systemctl suspend
-bindsym $mod+Shift+s		$e "python ~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -s"
-bindsym $mod+Shift+d		$e "python ~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -d"
+bindsym $mod+Shift+s		$e "python ~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -s -S 9"
+bindsym $mod+Shift+d		$e "python ~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -d -S 9"
 
 #brightnes
-bindsym XF86MonBrightnessUp		exec sudo light -A 10
-bindsym XF86MonBrightnessDown	exec sudo light -U 10
+bindsym XF86MonBrightnessUp		exec sudo light -A 10 && pkill -RTMIN+11 i3blocks
+bindsym XF86MonBrightnessDown	exec sudo light -U 10 && pkill -RTMIN+11 i3blocks
 
 #sound
-bindsym XF86AudioMute           $e amixer -D pulse sset Master toggle
-bindsym XF86AudioLowerVolume    $e pactl set-sink-volume 0 -10%
-bindsym XF86AudioRaiseVolume    $e pactl set-sink-volume 0 +10%
+bindsym XF86AudioMute           $e amixer -D pulse sset Master toggle && pkill -RTMIN+12 i3blocks
+bindsym XF86AudioLowerVolume    $e pactl set-sink-volume 0 -10% && pkill -RTMIN+12 i3blocks
+bindsym XF86AudioRaiseVolume    $e pactl set-sink-volume 0 +10% && pkill -RTMIN+12 i3blocks
 #bindsym XF86AudioMute			$e amixer sset Master toggle
 #bindsym XF86AudioLowerVolume	$e amixer sset Master 10%-
 #bindsym XF86AudioRaiseVolume	$e amixer sset Master 10%+

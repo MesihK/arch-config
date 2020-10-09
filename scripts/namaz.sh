@@ -4,6 +4,8 @@
 #http://namazvakitleri.diyanet.gov.tr/tr-TR/9651/
 #http://namazvakitleri.diyanet.gov.tr/en-US/9651/
 
+LABEL='<span color="#55aa55">''</span>'
+
 minutes () {
     HOUR=$(echo $1 | cut -c -2)
     MIN=$(echo $1 | cut -c 4-)
@@ -61,7 +63,7 @@ cat $FILE | grep -m1 -A 6 $DATE | grep -oP [0-9]+:[0-9]+ | while read -r line ; 
     then
         RES=$(echo $Tline \- $TIME | bc)
         
-        echo $(printname $CNT) $(todate $RES)
+        echo $LABEL $(printname $CNT) $(todate $RES)
         exit 0
     fi
 done
@@ -72,6 +74,6 @@ DATE=$(date -d tomorrow +%d.%m.%Y)
 #get first time
 Tline=$(minutes $(cat $FILE | grep -m1 -A 1 $DATE | grep -oP [0-9]+:[0-9]+))
 RES=$(echo 24\*60\-$TIME\+$Tline | bc)
-echo $(printname $CNT) $(todate $RES)
+echo $LABEL $(printname $CNT) $(todate $RES)
 
 

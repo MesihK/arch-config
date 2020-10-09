@@ -33,6 +33,7 @@ alias yt-axel='youtube-dl --external-downloader-args "-a " --external-downloader
 alias yt-lf='youtube-dl --list-formats'
 alias dmes='dmesg | tail -n 20'
 alias v3='vim ~/.config/i3/config'
+alias v3b='vim ~/.config/i3blocks/config'
 alias vp='vim ~/.config/polybar/config'
 alias vb='vim ~/.bashrc'
 alias vv='vim ~/.vimrc'

@@ -1,0 +1,81 @@
+# i3blocks config file 
+
+command=~/scripts/i3blocks/$BLOCK_NAME
+#separator_block_width=15
+markup=pango
+
+[Tracker]
+label=  
+signal=9
+command=~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -q -S $signal
+interval=30
+
+[wc]
+command=~/scripts/i3blocks/wc.sh
+interval=5
+
+[finance]
+command=~/scripts/finance.sh
+interval=600
+
+[namaz]
+command=~/scripts/namaz.sh
+interval=60
+
+[weather]
+command=~/scripts/openweathermap-fullfeatured.sh
+interval=600
+
+
+[light]
+signal=11
+command=~/scripts/i3blocks/light.sh
+interval=once
+
+[volume]
+signal=12
+command=~/scripts/i3blocks/volume
+interval=once
+
+[key]
+signal=10
+command=~/scripts/i3blocks/key.sh
+label=<span color="#ffb52a"> </span>
+interval=once
+
+[mem]
+command=~/scripts/i3blocks/mem.sh
+label=<span color="#ffb52a"> </span>
+interval=3
+
+#todo monospace yap
+[cpu]
+command=~/scripts/i3blocks/cpu.sh
+label=<span color="#e60053"> </span>
+interval=3
+
+[temp]
+command=~/scripts/i3blocks/temp.sh
+interval=5
+
+[disk]
+command=~/scripts/i3blocks/disk.sh
+label=:/
+interval=60
+
+[bat]
+command=~/scripts/i3blocks/bat.sh
+interval=5
+
+[eth]
+command=~/scripts/i3blocks/eth.sh
+interval=30
+
+[wifi]
+command=~/scripts/i3blocks/wlan.sh
+interval=30
+
+[clock]
+LABEL=<span color="#ffb52a"> </span>
+command=~/scripts/i3blocks/date.sh
+interval=30

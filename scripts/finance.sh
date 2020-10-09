@@ -38,6 +38,6 @@ GOLD2=$(echo $GOLD2 | sed 's|,|\.|g' )
 TOT=$(echo $GOLD\*36.76 | bc )
 
 #echo $USD\$ $GOLD\G $TOT
-echo %{F\#ffb52a}%{F-}$USD\$ %{F\#ffb52a} %{F-}$GOLD\-$GOLD2\
+echo '<span color="#55aa55">''</span>' $USD\$ '<span color="#ffb52a">' '</span>'$GOLD\-$GOLD2\
 
 
