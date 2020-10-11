@@ -20,6 +20,7 @@ $e  redshift -l 41.04:28.97
 $ea goodvibes --status-icon
 
 bar {
+	font pango:monospace 8
 	font pango:Weather Icons 8
 	font pango:FontAwesome5Free Solid 8
 	status_command i3blocks

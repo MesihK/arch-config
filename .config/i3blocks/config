@@ -1,7 +1,8 @@
 # i3blocks config file 
 
 command=~/scripts/i3blocks/$BLOCK_NAME
-#separator_block_width=15
+separator=false
+separator_block_width=3
 markup=pango
 
 [Tracker]
@@ -51,7 +52,6 @@ interval=3
 #todo monospace yap
 [cpu]
 command=~/scripts/i3blocks/cpu.sh
-label=<span color="#e60053"> </span>
 interval=3
 
 [temp]
@@ -60,7 +60,6 @@ interval=5
 
 [disk]
 command=~/scripts/i3blocks/disk.sh
-label=:/
 interval=60
 
 [bat]
@@ -74,6 +73,7 @@ interval=30
 [wifi]
 command=~/scripts/i3blocks/wlan.sh
 interval=30
+color=#9f78e1
 
 [clock]
 LABEL=<span color="#ffb52a"> </span>
