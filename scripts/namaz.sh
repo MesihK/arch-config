@@ -47,6 +47,23 @@ if [ ! -f $FILE ]
 then
     wget http://namazvakitleri.diyanet.gov.tr/en-US/$LOCATION -O $FILE
 fi
+
+case $BLOCK_BUTTON in
+	3)
+	STR=" $DATE \n"
+	CNT=0
+	cat $FILE | grep -m1 -A 6 $DATE | grep -oP [0-9]+:[0-9]+ | while read -r line ; do
+		CNT=$(echo $CNT\+1 | bc)
+		STR="${STR}$(printname $CNT)\t$line \n"
+		#since this is subshell, we need to notify-send here
+		if [ $CNT -eq 6 ]
+		then
+			notify-send "  Namaz Vakitleri" "$STR"
+		fi
+	done
+	;;
+esac
+
 #cat $FILE | grep -m1 -A 6 $DATE | grep -oP [0-9]+:[0-9]+  > /tmp/namaz.dat
 cat $FILE | grep -m1 -A 6 $TOMORROW > /dev/null 
 if [ $? -eq 1 ]
