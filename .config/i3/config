@@ -136,12 +136,12 @@ bindsym $mod+p				$e /home/mesih/scripts/monitor.sh
 bindsym $mod+Shift+a		$e /home/mesih/scripts/audio.sh
 bindsym $mod+n				$term /home/mesih/scripts/network.sh 
 bindsym $mod+c				$term /home/mesih/scripts/calc.sh 
-bindsym $mod+Shift+n		$e gksu /home/mesih/scripts/net_fix.sh
-bindsym $mod+m				$e gksu /home/mesih/scripts/dmenumount.sh
-bindsym $mod+u				$e gksu /home/mesih/scripts/dmenuumount.sh
+bindsym $mod+Shift+n		$e /home/mesih/scripts/net_fix.sh
+bindsym $mod+m				$e /home/mesih/scripts/dmenumount.sh
+bindsym $mod+u				$e /home/mesih/scripts/dmenuumount.sh
 bindsym $mod+r				$term -e ranger
 bindsym $mod+i				$term -e htop
-bindsym --release Print		$e scrot -s -b -d 1 '%Y:%m:%d:%H:%M:%S.png' -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots'
+bindsym --release Print		$e scrot -s -f -b '%Y:%m:%d:%H:%M:%S.png' -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots'
 bindsym --release $alt+l	$e /usr/bin/slock
 bindsym --release $alt+k	exec systemctl suspend
 bindsym $mod+Shift+s		$e "python ~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -s -S 9"
@@ -178,6 +178,6 @@ for_window [class="Nemo"]		floating enable
 for_window [class="vlc"]		floating enable
 for_window [class="Shutter"]	floating enable
 for_window [class="feh"]		floating enable
-for_window [class="Teams"]		floating enable
+#for_window [class="Teams"]		floating enable
 for_window [class="Goodvibes"]	floating enable
 for_window [class="GNU Octave"]	floating enable

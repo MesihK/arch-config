@@ -1,14 +1,15 @@
 # i3blocks config file 
 
 command=~/scripts/i3blocks/$BLOCK_NAME
-separator=false
-separator_block_width=3
+#separator=false
+separator_block_width=5
 markup=pango
 
 [Tracker]
-label=  
+label=<span color="#55aa55"> </span>
 signal=9
-command=~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -q -S $signal
+#command=~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -q -S $signal
+command=~/scripts/i3blocks/track.sh
 interval=30
 
 [wc]
@@ -62,20 +63,22 @@ interval=5
 command=~/scripts/i3blocks/disk.sh
 interval=60
 
-[bat]
-command=~/scripts/i3blocks/bat.sh
-interval=5
+#[bat]
+#command=~/scripts/i3blocks/bat.sh
+#interval=5
 
 [eth]
+label=<span color="#ffb52a"></span>
 command=~/scripts/i3blocks/eth.sh
 interval=30
 
 [wifi]
+label=<span color="#ffb52a"></span>
 command=~/scripts/i3blocks/wlan.sh
 interval=30
 color=#9f78e1
 
 [clock]
-LABEL=<span color="#ffb52a"> </span>
+LABEL=<span color="#ffb52a"></span>
 command=~/scripts/i3blocks/date.sh
 interval=30
