@@ -6,7 +6,7 @@ WEEK=$(date +%W)
 PWEEK=$(echo "$(date +%W)-1" | bc -l)
 T=~/prog/tracker/track.py
 #full performance if worked 5:30h=330m in a working day
-FULL=330
+FULL=360
 
 case $BLOCK_BUTTON in
 	3) notify-send 'Track Report' "$(date +%D)

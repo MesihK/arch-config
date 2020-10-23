@@ -155,3 +155,16 @@ With headphone microphone:
 ```
 ffmpeg -video_size 1920x1080 -framerate 25 -f x11grab -i :0.0 -f pulse -ac 2 -i 1 output.mkv
 ```
+
+## External HDD (Filesystem problem)
+
+if `df -h` show available as %0, it maybe because the reserved area.
+Normally %5 of the total space of a harddrive reserved to use by only root.
+So normal users see `df -h` output as available %0. 
+
+
+## Time Syncronization
+
+* install `chrony` and run
+* `sudo systemctl enable chronyd`
+* use `sudo hwclock --systohc` to save the clock

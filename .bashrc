@@ -15,6 +15,7 @@ export PATH=$PATH:/opt/MATLAB/R2018a/bin
 export PATH=$PATH:/opt/Qt5.12.4/5.12.4/gcc_64/bin
 export PATH=$PATH:/opt/Qt5.12.4/Tools/QtCreator/bin
 export PATH=$PATH:/home/mesih/edu/sys/final/test/
+export PATH=$PATH:/home/mesih/prog/tracker
 
 alias ls='ls --color=auto'
 alias ll='ls -alF'
@@ -38,21 +39,29 @@ alias vp='vim ~/.config/polybar/config'
 alias vb='vim ~/.bashrc'
 alias vv='vim ~/.vimrc'
 alias t='vim ~/prog/tracker/tracker.csv'
+alias tk='track.py -c ~/prog/tracker/tracker.csv 2>/dev/null '
+alias tks="track.py -c ~/prog/tracker/tracker.csv -iv -t 'Okul,Lab,BTE' 2>/dev/null "
+alias tkw="track.py -c ~/prog/tracker/tracker.csv -t 'Okul,Lab,BTE' 2>/dev/null -v -w "
 alias grep='grep --color=auto'
 alias hd='hexdump -C'
 alias sagem='sage --notebook=jupyter'
 yt-mp3(){
-	youtube-dl -i --audio-format mp3 -f "bestaudio/best" --postprocessor-args '-threads 4' -x -o "%(title)s.%(ext)s" --download-archive archive.txt "$1"
+	youtube-dl -i --audio-format mp3 -f "bestaudio/best" --postprocessor-args \
+	'-threads 4' -x -o "%(title)s.%(ext)s" --download-archive archive.txt "$1"
 }
 yt-mp3r(){
-	youtube-dl -i --audio-format mp3 -f "bestaudio/best" --postprocessor-args '-threads 4' -x -o "%(title)s.%(ext)s" --download-archive archive.txt --playlist-reverse "$1"
+	youtube-dl -i --audio-format mp3 -f "bestaudio/best" --postprocessor-args \
+	'-threads 4' -x -o "%(title)s.%(ext)s" --download-archive archive.txt --playlist-reverse "$1"
 }
 yt-opus(){
-	youtube-dl -i --audio-format opus -f "bestaudio/best" --postprocessor-args '-threads 4' -x -o "%(title)s.%(ext)s" --download-archive archive.txt "$1"
+	youtube-dl -i --audio-format opus -f "bestaudio/best" --postprocessor-args \
+	'-threads 4' -x -o "%(title)s.%(ext)s" --download-archive archive.txt "$1"
 }
 
 duu(){
-    sudo du -h -d "$1" > /tmp/size; ll -hS | awk '{print $5"\t"$9}' >> /tmp/size; cat /tmp/size | grep -P '^[0-9,.]+[G]' | sort -t, -n -r; cat /tmp/size | grep -P '^[0-9,.]+[M]' | sort -t, -n -r; rm /tmp/size
+    sudo du -h -d "$1" > /tmp/size; ll -hS | awk '{print $5"\t"$9}' >> /tmp/size; \ 
+	cat /tmp/size | grep -P '^[0-9,.]+[G]' | sort -t, -n -r; cat /tmp/size |  \
+	grep -P '^[0-9,.]+[M]' | sort -t, -n -r; rm /tmp/size
 }
 p (){
 for (( ; ; ))
@@ -66,39 +75,6 @@ do
 	fi
 done
 }
-
-h2d () {
-    printf "%03d\n" `echo "obase=10; ibase=16; $1" | bc`
-}
-d2h () {
-    printf "0x%02X\n" $1
-}
-h2b () {
-    printf "b%08d\n" `echo "obase=2; ibase=16; $1" | bc`
-}
-d2b () {
-    printf "b%08d\n" `echo "obase=2; ibase=10; $1" | bc`
-}
-yt-opus(){
-	youtube-dl -i --audio-format opus -f "bestaudio/best" --postprocessor-args '-threads 4' -x -o "%(title)s.%(ext)s" --download-archive archive.txt "$1"
-}
-
-duu(){
-    sudo du -h -d "$1" > /tmp/size; ll -hS | awk '{print $5"\t"$9}' >> /tmp/size; cat /tmp/size | grep -P '^[0-9,.]+[G]' | sort -t, -n -r; cat /tmp/size | grep -P '^[0-9,.]+[M]' | sort -t, -n -r; rm /tmp/size
-}
-p (){
-for (( ; ; ))
-do
-	ping google.com
-	if [ $? -eq 0 ] 
-	then
-		break
-	else
-		sleep 1
-	fi
-done
-}
-
 h2d () {
     printf "%03d\n" `echo "obase=10; ibase=16; $1" | bc`
 }
@@ -125,6 +101,6 @@ makep () {
 }
 
 #export LD_PRELOAD=/media/mesih/hdd1/opt/Xilinx/Vivado_Lab/2018.3/data/xicom/cable_drivers/lin64/install_script/install_drivers/usb-driver/libusb-driver.so
-alias bckphdd='sudo rsync -aAX --delete  --info=progress2 / --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /media/mesih/hdd1/backupArch/ '
+alias bckphdd='sudo rsync -aAX --delete  --info=progress2 / --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} /media/mesih/hdd/backupArch3/ '
 
 export LD_LIBRARY_PATH=/usr/local/qwt-6.0.1-svn/lib/:/usr/local/lib64:/usr/local/osg/lib
