@@ -39,6 +39,7 @@ GOLD=$(echo $GOLD | sed 's|,|\.|g' )
 GOLD2=$(cat /tmp/fin.dat | grep -m 1 -A 14 ALT | grep -oP  [0-9]+\.[0-9]+ | sed '2q;d' | cut -c -6)
 GOLD2=$(echo $GOLD2 | sed 's|,|\.|g' )
 
+
 #total
 TOT=$(echo $GOLD\*36.76 | bc )
 
@@ -46,6 +47,7 @@ TOT=$(echo $GOLD\*36.76 | bc )
 echo '<span color="#55aa55">''</span>' $USD2\$ '<span color="#ffb52a">' '</span>'$GOLD2\
 
 case $BLOCK_BUTTON in
-	3) notify-send "Finance Data" " $USD - $USD2\n $GOLD - $GOLD2" ;;
+	3) XAUUSD=$(wget -q -O - "https://data-asg.goldprice.org/dbXRates/USD" | grep -Po '"xauPrice":[0-9]+\.[0-9]+' | cut -d ':' -f 2) && 
+	notify-send "Finance Data" " $USD - $USD2\n $GOLD - $GOLD2\nXAUUSD: $XAUUSD" ;;
 esac
 

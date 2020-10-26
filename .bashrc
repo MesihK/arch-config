@@ -40,8 +40,8 @@ alias vb='vim ~/.bashrc'
 alias vv='vim ~/.vimrc'
 alias t='vim ~/prog/tracker/tracker.csv'
 alias tk='track.py -c ~/prog/tracker/tracker.csv 2>/dev/null '
-alias tks="track.py -c ~/prog/tracker/tracker.csv -iv -t 'Okul,Lab,BTE' 2>/dev/null "
-alias tkw="track.py -c ~/prog/tracker/tracker.csv -t 'Okul,Lab,BTE' 2>/dev/null -v -w "
+alias tks="track.py -c ~/prog/tracker/tracker.csv -iv -t 'Okul,Lab,BTE,Asist' 2>/dev/null "
+alias tkw="track.py -c ~/prog/tracker/tracker.csv -t 'Okul,Lab,BTE,Asist' 2>/dev/null -v -w "
 alias grep='grep --color=auto'
 alias hd='hexdump -C'
 alias sagem='sage --notebook=jupyter'

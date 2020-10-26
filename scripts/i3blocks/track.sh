@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TASKS='Okul,Lab,BTE'
+TASKS='Okul,Lab,BTE,Asist'
 CSV='/home/mesih/prog/tracker/tracker.csv'
 WEEK=$(date +%W)
 PWEEK=$(echo "$(date +%W)-1" | bc -l)

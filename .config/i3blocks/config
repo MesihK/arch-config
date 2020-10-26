@@ -63,9 +63,9 @@ interval=5
 command=~/scripts/i3blocks/disk.sh
 interval=60
 
-#[bat]
-#command=~/scripts/i3blocks/bat.sh
-#interval=5
+[bat]
+command=~/scripts/i3blocks/bat.sh
+interval=5
 
 [eth]
 label=<span color="#ffb52a"></span>
