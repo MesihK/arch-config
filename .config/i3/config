@@ -142,7 +142,7 @@ bindsym $mod+u				$e /home/mesih/scripts/dmenuumount.sh
 bindsym $mod+r				$term -e ranger
 bindsym $mod+i				$term -e htop
 bindsym --release Print		$e scrot -s -f -b '%Y:%m:%d:%H:%M:%S.png' -e 'xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots'
-bindsym --release F12		$e scrot -b '%Y:%m:%d:%H:%M:%S.png' -e "mv \$f ~/Pictures/Screenshots/Draw && gimp -s ~/Pictures/Screenshots/Draw/\$f & xdotool search --sync --onlyvisible --name Gimp key Control_L+Shift_L+j" 
+bindsym --release F12		$e scrot -b '%Y:%m:%d:%H:%M:%S.png' -e "mv \$f ~/Pictures/Screenshots/Draw && gimp -dfs ~/Pictures/Screenshots/Draw/\$f & xdotool search --sync --onlyvisible --name Gimp key Control_L+Shift_L+j" 
 bindsym --release $alt+l	$e /usr/bin/slock
 bindsym --release $alt+k	exec systemctl suspend
 bindsym $mod+Shift+s		$e "python ~/prog/tracker/track.py -c '/home/mesih/prog/tracker/tracker.csv' -s -S 9"
