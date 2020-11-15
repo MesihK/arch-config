@@ -29,7 +29,7 @@ mountandroid() { \
 	chosen=$(echo "$drives" | dmenu -i -p "Which Android device?" | cut -d : -f 1)
 	#getmount "$HOME -type d -maxdepth 3"
 	getmount "/mnt /media /mount /home -type d -maxdepth 5"
-	simple-mtpfs -o allow_other --device "$chosen" "$mp"
+	simple-mtpfs --device "$chosen" "$mp"
 	echo simple-mtpfs --device "$chosen" "$mp"
 	}
 

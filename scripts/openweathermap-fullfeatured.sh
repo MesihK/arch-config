@@ -51,6 +51,8 @@ KEY="8597c7576b60fdb0473f57ad5db1670e"
 #gebze
 CITY="747014"
 CNAME="Gebze"
+#ames
+#CITY=4846834
 #avanos
 #CITY="322965"
 #CNAME="Avanos"

@@ -42,12 +42,19 @@ GOLD2=$(echo $GOLD2 | sed 's|,|\.|g' )
 
 #total
 TOT=$(echo $GOLD\*36.76 | bc )
+MUSD=$(echo "($USD2+$USD)/2" | bc -l)
+MUSD=$(printf '%4.2f' $MUSD)
+MGOLD=$(echo "($GOLD2+$GOLD)/2" | bc -l)
+MGOLD=$(printf '%6.2f' $MGOLD)
+XAUUSD=$(wget -q -O - "https://data-asg.goldprice.org/dbXRates/USD" | grep -Po '"xauPrice":[0-9]+\.[0-9]+' | cut -d ':' -f 2)  
+XAUUSD=$(printf '%6.2f' $XAUUSD)
 
 #echo $USD\$ $GOLD\G $TOT
-echo '<span color="#55aa55">''</span>' $USD2\$ '<span color="#ffb52a">' '</span>'$GOLD2\
+echo '<span color="#55aa55">''</span>' $MUSD\$ '<span color="#ffb52a">' '</span>'$MGOLD - $XAUUSD\
 
+#https://data-asg.goldprice.org/dbXRates/TRY
 case $BLOCK_BUTTON in
-	3) XAUUSD=$(wget -q -O - "https://data-asg.goldprice.org/dbXRates/USD" | grep -Po '"xauPrice":[0-9]+\.[0-9]+' | cut -d ':' -f 2) && 
-	notify-send "Finance Data" " $USD - $USD2\n $GOLD - $GOLD2\nXAUUSD: $XAUUSD" ;;
+#	3) XAUUSD=$(wget -q -O - "https://data-asg.goldprice.org/dbXRates/USD" | grep -Po '"xauPrice":[0-9]+\.[0-9]+' | cut -d ':' -f 2) && 
+	3) notify-send "Finance Data" " $USD - $USD2\n $GOLD - $GOLD2\nXAUUSD: $XAUUSD" ;;
 esac
 

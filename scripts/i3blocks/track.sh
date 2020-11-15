@@ -9,6 +9,8 @@ T=~/prog/tracker/track.py
 FULL=360
 
 case $BLOCK_BUTTON in
+	1) notify-send 'Track Report' "$(date +%D)
+$($T -c $CSV -iv)" ;;
 	3) notify-send 'Track Report' "$(date +%D)
 $TASKS 
 $($T -c $CSV -w $WEEK -t $TASKS -f $FULL)" ;;
