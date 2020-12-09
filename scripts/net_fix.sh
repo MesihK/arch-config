@@ -43,10 +43,13 @@ then
 	ping -c 1 google.com > /dev/null 2>&1
 	if [ $? -eq 0 ] 
 	then
-		info 'Internet connection is OK, exiting!'
+		notify-send 'Internet connection is OK, exiting!'
 		exit 1
 	fi
 fi
+
+ETH=$(dmesg | grep renamed | grep -Po "enp[0-9]+s[0-9]+")
+WAN=$(dmesg | grep renamed | grep -Po "wlp[0-9]+s[0-9]+")
 
 info 'kill wpa_supplicant and dhcpcd'
 sudo killall -s 2 wpa_supplicant
@@ -67,7 +70,7 @@ do
 		cnt+=1
 		if [ $cnt -gt 10 ]
 		then
-			err 'kill unsuccesful'
+			notify-send 'wpa_supplicant and dhcpcd kill unsuccesful'
 			exit 0
 		fi
 		sleep 1;
@@ -76,16 +79,20 @@ done
 
 WIFI=$(cat /etc/wpa_supplicant/selected)
 info "restart wifi:  $WIFI"
-sudo wpa_supplicant -B -i wlp2s0 -c /etc/wpa_supplicant/$WIFI.conf 
-sudo dhcpcd wlp2s0 &
-sudo dhcpcd enp8s0
+
+sudo ifconfig $ETH up
+sudo ifconfig $WAN up
+
+sudo wpa_supplicant -B -i $WAN -c /etc/wpa_supplicant/$WIFI.conf 
+sudo dhcpcd $WAN &
+sudo dhcpcd $ETH
 
 ping -c 1 google.com > /dev/null 2>&1
 if [ $? -eq 0 ] 
 then
-	info 'Succesful!'
+	notify-send 'Succesfuly Connected!'
 	exit 1
 else
-	err 'Failed!'
+	notify-send 'Connection Failed!'
 	exit 0
 fi
