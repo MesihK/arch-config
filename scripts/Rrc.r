@@ -57,15 +57,15 @@ ptest <- function(m,m0,s,n,tail=1){
 	if(tail<1)tail=1
 	#todo add alpha for critical value test
 	cat(sprintf("T-Test: t-value is %4.3f\n",t))
-	cat(sprintf("T-Test: The lower p-value is %4.3f\n",pt(t,n-1)*tail))
-	cat(sprintf("T-Test: The upper p-value is %4.3f\n",(1-pt(t,n-1))*tail))
+	cat(sprintf("T-Test: The lower p-value is %7.6f\n",pt(t,n-1)*tail))
+	cat(sprintf("T-Test: The upper p-value is %7.6f\n",(1-pt(t,n-1))*tail))
 }
 ptest2 <- function(t,n,tail=1){
 	if(tail>2)tail=2
 	if(tail<1)tail=1
 	cat(sprintf("T-Test: t-value is %4.3f\n",t))
-	cat(sprintf("T-Test: The lower p-value is %4.3f\n",pt(t,n-1)*tail))
-	cat(sprintf("T-Test: The upper p-value is %4.3f\n",(1-pt(t,n-1))*tail))
+	cat(sprintf("T-Test: The lower p-value is %7.6f\n",pt(t,n-1)*tail))
+	cat(sprintf("T-Test: The upper p-value is %7.6f\n",(1-pt(t,n-1))*tail))
 }
 ztest <- function(m,m0,s,n,tail=1){
 	z = (m-m0)/(s/sqrt(n))
@@ -112,5 +112,28 @@ samplesizeCI <- function(s,L,a=.05){
 	n = 4*qnorm(1-a/2)^2*s^2/(L^2)
 	cat(sprintf("The required sampe size is %4.3f for significance level %%%d with CI Lenght %4.3f\n",
 				n,round(a*100),L))
+}
+chisqhypt <- function(s,s0,n,a=.05){
+	x2 = (n-1)*s^2/s0^2
+	if(s>s0){
+		p = 2*(1-pchisq(x2,n-1,ncp=0))
+	} else {
+		p = 2*pchisq(x2,n-1,ncp=0)
+	}
+	cat(sprintf("Two-Sided Chi-Square Hyptohesis Test: x2: %4.3f, p-value: %4.3f\n",x2,p))
+}
+binomialPhyp <- function(p,p0,n,a=0.05){
+	if(n*p0*(1-p0)<5) {
+		cat("Binomial Hypt: np0q0<5 normal approximation will not work!\n")
+		return
+	}
+	z = (abs(p-p0)-1/(2*n))/sqrt(p0*(1-p0)/n)
+	pVal = 2*(1-pnorm(z))
+	cat(sprintf("Binomial Hypt: p:%4.3f, p0:%4.3f, n:%d, a:%%%d, z:%4.3f, p-value:%f\n",
+				p,p0,n,round((1-a)*100),z,pVal))
+}
+poissonP <- function(l0,l){
+	p = ppois(l-1,lambda=l0)
+	cat(sprintf("L0: %4.3f, L: %4.3f, p lower:%f p upper:%f\n",l0,l,2*(1-p),2*p))
 }
 

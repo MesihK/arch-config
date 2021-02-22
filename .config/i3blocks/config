@@ -16,9 +16,9 @@ interval=30
 command=~/scripts/i3blocks/wc.sh
 interval=5
 
-[finance]
-command=~/scripts/finance.sh
-interval=600
+#[finance]
+#command=~/scripts/finance.sh
+#interval=600
 
 [namaz]
 command=~/scripts/namaz.sh

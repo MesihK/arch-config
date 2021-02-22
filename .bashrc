@@ -16,6 +16,7 @@ export PATH=$PATH:/opt/Qt5.12.4/5.12.4/gcc_64/bin
 export PATH=$PATH:/opt/Qt5.12.4/Tools/QtCreator/bin
 export PATH=$PATH:/home/mesih/edu/sys/final/test/
 export PATH=$PATH:/home/mesih/prog/tracker
+export PATH=$PATH:/home/mesih/.local/bin
 
 alias ls='ls --color=auto'
 alias ll='ls -alF'
@@ -30,6 +31,7 @@ alias "v=xclip -o"
 
 alias yt-dl360='youtube-dl -i -f "bestvideo[height<=360]+bestaudio/best[height<=360]" -o "%(title)s.%(ext)s"'
 alias yt-dl480='youtube-dl -i -f "bestvideo[height<=480]+bestaudio/best[height<=480]" -o "%(title)s.%(ext)s"'
+alias yt-dl720='youtube-dl -i -f "bestvideo[height<=720]+bestaudio/best[height<=720]" -o "%(title)s.%(ext)s"'
 alias yt-axel='youtube-dl --external-downloader-args "-a " --external-downloader axel'
 alias yt-lf='youtube-dl --list-formats'
 alias dmes='dmesg | tail -n 20'
@@ -62,6 +64,15 @@ duu(){
     sudo du -h -d "$1" > /tmp/size; ll -hS | awk '{print $5"\t"$9}' >> /tmp/size; \ 
 	cat /tmp/size | grep -P '^[0-9,.]+[G]' | sort -t, -n -r; cat /tmp/size |  \
 	grep -P '^[0-9,.]+[M]' | sort -t, -n -r; rm /tmp/size
+}
+pdfScan(){
+	#this function is used to increase the contrast of hand written - scanned
+	#pdf files.
+	mkdir /tmp/$1
+	convert -density 300 $1 /tmp/$1/output-%02d.jpg
+	convert /tmp/$1/output*.jpg -level 5%,98%,0.5 /tmp/$1/final-%02d.jpg
+	convert /tmp/$1/final*.jpg -quality 60 -compress jpeg $1.new.pdf
+	rm -fr /tmp/$1 
 }
 p (){
 for (( ; ; ))

@@ -48,9 +48,11 @@ MGOLD=$(echo "($GOLD2+$GOLD)/2" | bc -l)
 MGOLD=$(printf '%6.2f' $MGOLD)
 XAUUSD=$(wget -q -O - "https://data-asg.goldprice.org/dbXRates/USD" | grep -Po '"xauPrice":[0-9]+\.[0-9]+' | cut -d ':' -f 2)  
 XAUUSD=$(printf '%6.2f' $XAUUSD)
+RATIO=$(echo "($GOLD/$USD2)*22" | bc -l)
+RATIO=$(printf '%4.2f' $RATIO)
 
 #echo $USD\$ $GOLD\G $TOT
-echo '<span color="#55aa55">''</span>' $MUSD\$ '<span color="#ffb52a">' '</span>'$MGOLD - $XAUUSD\
+echo '<span color="#55aa55">''</span>' $MUSD\$ '<span color="#ffb52a">' '</span>'$MGOLD - $XAUUSD - $RATIO \
 
 #https://data-asg.goldprice.org/dbXRates/TRY
 case $BLOCK_BUTTON in

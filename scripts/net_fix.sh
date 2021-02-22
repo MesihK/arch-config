@@ -48,8 +48,8 @@ then
 	fi
 fi
 
-ETH=$(dmesg | grep renamed | grep -Po "enp[0-9]+s[0-9]+")
-WAN=$(dmesg | grep renamed | grep -Po "wlp[0-9]+s[0-9]+")
+ETH=$(ip link | grep -Po "enp[0-9]+s[0-9]+")
+WAN=$(ip link | grep -Po "wlp[0-9]+s[0-9]+")
 
 info 'kill wpa_supplicant and dhcpcd'
 sudo killall -s 2 wpa_supplicant

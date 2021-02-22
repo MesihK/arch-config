@@ -1,8 +1,8 @@
 #!/bin/sh
 
 case $BLOCK_BUTTON in
-	#3) notify-send 'Date' "$(TZ='US/Central' date +'%d/%m/%Y %H:%M' && TZ='Turkey' date +' %H:%M')" ;;
-	3) notify-send "$(date +'%d/%m/%Y')" "$(cal)" ;;
+	3) notify-send "$(TZ='US/Central' date +'%d/%m/%Y %H:%M' && TZ='Turkey' date +' %H:%M')" "$(cal)";;
+	#3) notify-send "$(date +'%d/%m/%Y')" "$(cal)" ;;
 esac
 
-echo $LABEL$(date +'%H:%M')
+echo $LABEL$(date +'%m/%d %H:%M')

@@ -34,9 +34,11 @@ printname () {
     fi
 }
 
+LOCATION=8777
+#ames=8777
 #gebze=9651
-LOCATION=9651
 #avanos=17878
+#chicago=8760
 #LOCATION=17878
 DATE="$(date +%d.%m.%Y)"
 TOMORROW=$(date -d tomorrow +%d.%m.%Y)
